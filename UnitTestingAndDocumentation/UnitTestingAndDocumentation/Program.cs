@@ -34,7 +34,6 @@ namespace UnitTestingAndDocumentation
                         Menu();
                         break;
                     case 2:
-                        // call withdraw method
                         Console.WriteLine();
                         Console.WriteLine("How much would you like to withdraw?");
                         decimal withdrawAmount = Convert.ToDecimal(Console.ReadLine());
@@ -43,8 +42,12 @@ namespace UnitTestingAndDocumentation
                         Menu();
                         break;
                     case 3:
-                        // call deposit method
-                        Console.WriteLine("Deposit method goes here.");
+                        Console.WriteLine();
+                        Console.WriteLine("How much would you like to deposit?");
+                        decimal depositAmount = Convert.ToDecimal(Console.ReadLine());
+                        Balance = DepositFunds(depositAmount);
+                        GetBalance();
+                        Menu();
                         break;
                     case 4:
                         Environment.Exit(0);
@@ -71,6 +74,11 @@ namespace UnitTestingAndDocumentation
             Console.WriteLine($"Your current balance is ${Balance}");
         }
 
+        /// <summary>
+        /// Determines if there is a large enough balance left to withdraw funds. If there is, then the funds are withdrawn and the remaining balance is returned.
+        /// </summary>
+        /// <param name="withdrawAmount">The amount that the user has specified to withdraw from the account.</param>
+        /// <returns>The current remaining balance in the account.</returns>
         static decimal WithdrawFunds(decimal withdrawAmount)
         {
             decimal currentBalance = Balance - withdrawAmount;
@@ -79,6 +87,17 @@ namespace UnitTestingAndDocumentation
                 Console.WriteLine("You do not have enough funds to complete this transaction.");
                 Menu();
             }
+            return currentBalance;
+        }
+
+        /// <summary>
+        /// Adds the deposit amount specified by the user to the account balance.
+        /// </summary>
+        /// <param name="depositAmount">The amount that the user has specified to deposit to the account.</param>
+        /// <returns>The current remaining balance in the account.</returns>
+        static decimal DepositFunds(decimal depositAmount)
+        {
+            decimal currentBalance = Balance + depositAmount;
             return currentBalance;
         }
     }
