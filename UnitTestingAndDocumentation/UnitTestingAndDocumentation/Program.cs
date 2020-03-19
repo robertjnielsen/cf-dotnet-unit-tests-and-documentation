@@ -2,12 +2,12 @@
 
 namespace UnitTestingAndDocumentation
 {
-    class Program
+    public class Program
     {
         /// <summary>
         /// The user's current banking balance.
         /// </summary>
-        private static decimal Balance = 42.57M;
+        public static decimal Balance = 42.57M;
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome To FakeBank!");
@@ -69,7 +69,7 @@ namespace UnitTestingAndDocumentation
         /// <summary>
         /// Retrieves the current balance and outputs it to the console.
         /// </summary>
-        static void GetBalance()
+        public static void GetBalance()
         {
             Console.WriteLine($"Your current balance is ${Balance}");
         }
@@ -79,14 +79,14 @@ namespace UnitTestingAndDocumentation
         /// </summary>
         /// <param name="withdrawAmount">The amount that the user has specified to withdraw from the account.</param>
         /// <returns>The current remaining balance in the account.</returns>
-        static decimal WithdrawFunds(decimal withdrawAmount)
+        public static decimal WithdrawFunds(decimal withdrawAmount)
         {
-            decimal currentBalance = Balance - withdrawAmount;
-            if (currentBalance < 0)
+            if (withdrawAmount > Balance)
             {
                 Console.WriteLine("You do not have enough funds to complete this transaction.");
-                Menu();
+                return Balance;
             }
+            decimal currentBalance = Balance - withdrawAmount;
             return currentBalance;
         }
 
@@ -95,8 +95,13 @@ namespace UnitTestingAndDocumentation
         /// </summary>
         /// <param name="depositAmount">The amount that the user has specified to deposit to the account.</param>
         /// <returns>The current remaining balance in the account.</returns>
-        static decimal DepositFunds(decimal depositAmount)
+        public static decimal DepositFunds(decimal depositAmount)
         {
+            if (depositAmount < 0)
+            {
+                Console.WriteLine("You can not deposit a negative amount.");
+                return Balance;
+            }
             decimal currentBalance = Balance + depositAmount;
             return currentBalance;
         }

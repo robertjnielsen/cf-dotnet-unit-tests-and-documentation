@@ -30,6 +30,10 @@ Select `Debug` -> `Start Without Debugging` or press `Ctrl + F5` if you're on a 
 
 ## Change Log
 
+**1.5** - 20200318
+- Successfully passed two unit tests for WithdrawFunds method.
+- Successfully passed two unit tests for DepositFunds method.
+
 **1.4** - 20200318
 - DepositFunds method defined and functional.
 - Added summary comment for WithdrawFunds method.
