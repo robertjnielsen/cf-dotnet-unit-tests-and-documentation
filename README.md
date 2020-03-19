@@ -30,6 +30,9 @@ Select `Debug` -> `Start Without Debugging` or press `Ctrl + F5` if you're on a 
 
 ## Change Log
 
+**1.2** - 20200318
+- GetBalance method defined and functional.
+
 **1.1** - 20200318
 - Menu method defined and functional.
 
