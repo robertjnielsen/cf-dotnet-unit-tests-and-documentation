@@ -7,7 +7,7 @@ namespace UnitTestingAndDocumentation
         /// <summary>
         /// The user's current banking balance.
         /// </summary>
-        private static decimal Balance = 42.57M;
+        public static decimal Balance = 42.57M;
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome To FakeBank!");
@@ -97,6 +97,11 @@ namespace UnitTestingAndDocumentation
         /// <returns>The current remaining balance in the account.</returns>
         public static decimal DepositFunds(decimal depositAmount)
         {
+            if (depositAmount < 0)
+            {
+                Console.WriteLine("You can not deposit a negative amount.");
+                return Balance;
+            }
             decimal currentBalance = Balance + depositAmount;
             return currentBalance;
         }
