@@ -30,6 +30,10 @@ Select `Debug` -> `Start Without Debugging` or press `Ctrl + F5` if you're on a 
 
 ## Change Log
 
+**1.4** - 20200318
+- DepositFunds method defined and functional.
+- Added summary comment for WithdrawFunds method.
+
 **1.3** - 20200318
 - WithdrawFunds method defined and functional.
 
