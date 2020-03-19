@@ -7,7 +7,7 @@ namespace UnitTestingAndDocumentation
         /// <summary>
         /// The user's current banking balance.
         /// </summary>
-        private static decimal balance = 42.57M;
+        private static decimal Balance = 42.57M;
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome To FakeBank!");
@@ -29,14 +29,18 @@ namespace UnitTestingAndDocumentation
                 switch (menuSelection)
                 {
                     case 1:
-                        // call balance method
                         Console.WriteLine();
                         GetBalance();
                         Menu();
                         break;
                     case 2:
                         // call withdraw method
-                        Console.WriteLine("Withdraw method goes here.");
+                        Console.WriteLine();
+                        Console.WriteLine("How much would you like to withdraw?");
+                        decimal withdrawAmount = Convert.ToDecimal(Console.ReadLine());
+                        Balance = WithdrawFunds(withdrawAmount);
+                        GetBalance();
+                        Menu();
                         break;
                     case 3:
                         // call deposit method
@@ -64,7 +68,18 @@ namespace UnitTestingAndDocumentation
         /// </summary>
         static void GetBalance()
         {
-            Console.WriteLine($"Your current balance is ${balance}");
+            Console.WriteLine($"Your current balance is ${Balance}");
+        }
+
+        static decimal WithdrawFunds(decimal withdrawAmount)
+        {
+            decimal currentBalance = Balance - withdrawAmount;
+            if (currentBalance < 0)
+            {
+                Console.WriteLine("You do not have enough funds to complete this transaction.");
+                Menu();
+            }
+            return currentBalance;
         }
     }
 }
