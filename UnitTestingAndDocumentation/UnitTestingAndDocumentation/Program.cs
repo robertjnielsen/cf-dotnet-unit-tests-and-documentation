@@ -4,14 +4,22 @@ namespace UnitTestingAndDocumentation
 {
     class Program
     {
+        /// <summary>
+        /// The user's current banking balance.
+        /// </summary>
+        private static decimal balance = 42.57M;
         static void Main(string[] args)
         {
+            Console.WriteLine("Welcome To FakeBank!");
             Menu();
         }
 
+        /// <summary>
+        /// Allows the user to select from a variety of menu options, and calls the appropriate method(s) in response to the user's selection.
+        /// </summary>
         static void Menu()
         {
-            Console.WriteLine("Welcome To FakeBank!");
+            Console.WriteLine();
             Console.WriteLine("Please input a menu number to make a selection:");
             Console.WriteLine("1) View My Balance \n2) Withdraw Funds \n3) Deposit Funds \n4) Exit ATM");
             int menuSelection;
@@ -22,7 +30,9 @@ namespace UnitTestingAndDocumentation
                 {
                     case 1:
                         // call balance method
-                        Console.WriteLine("Balance method goes here.");
+                        Console.WriteLine();
+                        GetBalance();
+                        Menu();
                         break;
                     case 2:
                         // call withdraw method
@@ -46,6 +56,15 @@ namespace UnitTestingAndDocumentation
                 Console.WriteLine("Please choose a valid menu option.");
                 Menu();
             }
+
+        }
+
+        /// <summary>
+        /// Retrieves the current balance and outputs it to the console.
+        /// </summary>
+        static void GetBalance()
+        {
+            Console.WriteLine($"Your current balance is ${balance}");
         }
     }
 }
