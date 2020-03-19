@@ -10,8 +10,19 @@ namespace UnitTestingAndDocumentation
         public static decimal Balance = 42.57M;
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome To FakeBank!");
-            Menu();
+            try
+            {
+                Console.WriteLine("Welcome To FakeBank!");
+                Menu();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Something went wrong and we had to shut down: {e}");
+            }
+            finally
+            {
+                Console.WriteLine("Thank you for using our program! We hope that you choose us for all of your banking needs. Goodbye.");
+            }
         }
 
         /// <summary>
@@ -34,20 +45,39 @@ namespace UnitTestingAndDocumentation
                         Menu();
                         break;
                     case 2:
-                        Console.WriteLine();
-                        Console.WriteLine("How much would you like to withdraw?");
-                        decimal withdrawAmount = Convert.ToDecimal(Console.ReadLine());
-                        Balance = WithdrawFunds(withdrawAmount);
-                        GetBalance();
-                        Menu();
+                        try
+                        {
+                            Console.WriteLine();
+                            Console.WriteLine("How much would you like to withdraw?");
+                            decimal withdrawAmount = Convert.ToDecimal(Console.ReadLine());
+                            Balance = WithdrawFunds(withdrawAmount);
+                            GetBalance();
+                            Menu();
+                        }
+                        catch (FormatException e)
+                        {
+                            throw e;
+                        }
                         break;
                     case 3:
-                        Console.WriteLine();
-                        Console.WriteLine("How much would you like to deposit?");
-                        decimal depositAmount = Convert.ToDecimal(Console.ReadLine());
-                        Balance = DepositFunds(depositAmount);
-                        GetBalance();
-                        Menu();
+                        try
+                        {
+                            Console.WriteLine();
+                            Console.WriteLine("How much would you like to deposit?");
+                            decimal depositAmount = Convert.ToDecimal(Console.ReadLine());
+                            Balance = DepositFunds(depositAmount);
+                            GetBalance();
+                            Menu();
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine($"Something went wrong: {e}");
+                            Console.WriteLine("\n\n");
+                            Console.WriteLine("Please press ENTER / RETURN to return to the menu.");
+                            Console.ReadLine();
+                            Console.Clear();
+                            Menu();
+                        }
                         break;
                     case 4:
                         Environment.Exit(0);
