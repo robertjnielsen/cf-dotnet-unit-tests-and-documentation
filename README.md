@@ -30,6 +30,9 @@ Select `Debug` -> `Start Without Debugging` or press `Ctrl + F5` if you're on a 
 
 ## Change Log
 
+**1.6** - 20200318
+- Included exception handling.
+
 **1.5** - 20200318
 - Successfully passed two unit tests for WithdrawFunds method.
 - Successfully passed two unit tests for DepositFunds method.
