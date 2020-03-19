@@ -28,7 +28,20 @@ Select `Debug` -> `Start Without Debugging` or press `Ctrl + F5` if you're on a 
 
 ## Visuals
 
+##### Application Start
+![Application Start Screen Capture](assets/img/app-start.png)
+
+##### Application Running
+![Application Running Screen Capture](assets/img/app-running.png)
+
+##### Application Finished
+![Application Finished Screen Capture](assets/img/app-finished.png)
+
 ## Change Log
+
+**1.7** - 20200318
+- Included screen captures in README.
+- Completed documentation.
 
 **1.6** - 20200318
 - Included exception handling.
